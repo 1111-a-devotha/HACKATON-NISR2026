@@ -6,8 +6,9 @@
 
 NISR 2026 Big Data Hackathon, Track 2: Financial Inclusion and Poverty Reduction.
 
-- **Live app:** [add your deployed link]
-- **Team:** [Name 1], [Name 2], [University]
+- **Live app:** https://ntawusigara.vercel.app
+- **Source code:** [add the public GitHub link before submitting]
+- **Team:** TUYISINGIZE Devotha and SEBAGENI ISANGE Aimee Kevine
 
 ## The problem
 
@@ -21,11 +22,17 @@ Planners in MINECOFIN, MINALOC and LODA, the National Bank, SACCOs and NGOs need
 ## What it does
 
 - **Priority index** combining five indicators: poverty rate, number of poor people, adults not formally served, adults without a bank account, and slow poverty reduction since 2017.
+- **Planning lenses:** one-click weight sets for different planners (social protection, financial inclusion, where progress stalled, reach the most people). Each shows its own top 5, so a LODA planner and a SACCO manager can start from different questions on the same evidence.
+- **Consensus districts:** the tool counts which districts reach the top 5 under the five lenses. Gisagara is in 4 of 5; Nyamagabe, Nyanza and Rusizi are in 3 of 5. These are the safest first choices whatever a planner values.
+- **Targeting reach ("Does it reach the right people?"):** a chart that shows what share of poor people, and of adults outside formal finance, is reached when a programme targets the top k districts of the user's ranking, against poverty rate alone and random choice. With the default weights, the top 10 districts reach 50% of poor people and 39% of adults outside formal finance (poverty rate alone: 48% and 35%; random: 33%).
+- **"Why this score?":** every district profile splits its score into what each of the five indicators contributes, so a planner can see whether a district ranks high because of poverty, scale, or finance gaps.
 - **Adjustable weights:** users set how much each indicator counts and the map and ranking update instantly.
 - **Robustness test:** 10,000 random weight sets show which districts are priorities whatever the weights. Robust top 5: Gisagara, Nyanza, Nyamasheke, Nyaruguru, Ngoma.
 - **District typologies** from k-means clustering: Poor and under-served (12), Lower poverty, finance gaps (11), Stalled progress (4), Banked urban core (3).
 - **District profiles** with poverty trends, a financial access strand and data-driven options to consider.
 - **CSV export** of any ranking, with the weights used.
+- **Works offline and installs:** the app is a progressive web app. After one visit it opens with no internet (service worker), and it can be added to a phone or laptop home screen.
+- **Start-here guide:** three numbered steps at the top for first-time users and judges.
 - **Three languages:** the whole interface switches between Kinyarwanda, English and French.
 - **On-device AI assistant ("Ask the data"):** ask questions in Kinyarwanda, English or French. A small model trained by the team runs in the browser: no API, no key, no server, and it works offline. Answers are computed from the tool's district table, so figures cannot be invented.
 - **Briefing notes:** one click writes a three-paragraph note on any district, in the page language, for district officials and SACCO managers. Generated on the device from the same table.
@@ -33,6 +40,10 @@ Planners in MINECOFIN, MINALOC and LODA, the National Bank, SACCOs and NGOs need
 - **Plan coverage:** enter how many people a programme can reach (and optionally the cost per person). The tool shares them across the top priority districts, or all 30, in proportion to their poor people, capped at each district's poor population, with a CSV download.
 - **One-page district report:** prints an A4 brief for any district, in the page language, for district planning meetings.
 - **What changed:** ready for EICV8 or the next FinScope. Load the new district figures as a CSV (a template is provided); the tool flags which changes are larger than sampling error and shows how the ranking moves. A clearly labelled simulated demo shows why this matters: sampling noise alone can reshuffle the top 5 while no real change is flagged.
+- **Evidence charts (five linked views):** a poverty × financial-exclusion bubble chart with a shaded "double gap" quadrant (switch the vertical axis between not formally served, unbanked, excluded and informal only), a 2017 → 2024 progress chart that flags stalled districts, a 100% stacked chart of how adults access finance in all 30 districts, a rank-uncertainty chart showing each district's likely rank range and top-5 probability, and province totals. Every chart follows the user's weights and selected district, has tooltips and keyboard access, writes its own one-line takeaway in the page language, and downloads as a PNG for reports.
+- **Bivariate overlap map:** colour the map by poverty and exclusion at once (thirds of districts on each), so the places where both gaps meet stand out.
+- **At a glance:** three live headline figures under the map (districts in the double gap and their share of the poor, share of the poor in the current top 10, districts where poverty stalled).
+- **Shareable views:** the URL keeps the weights, language, map colouring and selected district, so a planner can send colleagues the exact view they are looking at.
 - **Household poverty model (phase 2):** a tested pipeline that trains on EICV7 microdata as soon as access is granted.
 
 ## Key findings
@@ -41,7 +52,7 @@ Planners in MINECOFIN, MINALOC and LODA, the National Bank, SACCOs and NGOs need
 
 - An estimated 3,629,696 people live below the poverty line (district poverty rates applied to 2022 Census populations).
 - Poorer districts have fewer banked adults (Spearman rho = -0.38, p = 0.038) and somewhat more adults outside formal finance (rho = 0.34, p = 0.069).
-- Four districts (Nyanza, Ngoma, Burera, Rwamagana) form a "stalled progress" group: poverty fell by under 6 points since 2017, against 12.4 nationally.
+- Four districts (Nyanza, Ngoma, Burera, Rwamagana) form a "stalled progress" group: poverty fell by under 6 points since 2017, against 12.4 nationally. (The charts separately list every district with a fall under 7 points, which also includes Kicukiro and Nyarugenge, where poverty is already low.)
 - Large-population districts such as Nyagatare, Rusizi and Rubavu each have over 200,000 poor residents: they rise quickly when the number of poor people is weighted more.
 
 ## Repository
@@ -53,8 +64,9 @@ analysis/            build_index.py: cleaning, index, robustness, clustering
                      district_model_check.py: tests district-level prediction (negative result)
                      train_poverty_model.py: household model for EICV7 microdata (phase 2)
                      train_assistant.py: trains the on-device assistant, writes app/ai-model.js
-app/                 Static web app (index.html, data.js, ai-model.js, ai-local.js), deployable as is
-docs/                Methodology, data sources, AI disclosure, roadmap
+app/                 Static web app (index.html, data.js, ntw-tools.js, ntw-charts.js, ai-model.js, ai-local.js, sw.js, manifest.webmanifest), deployable as is
+docs/                Problem and solution guide, judging-criteria mapping, NST2 alignment, methodology,
+                     data sources, AI disclosure, roadmap
 ```
 
 ## Run it
@@ -80,6 +92,10 @@ The whole app, including the AI assistant, is static: no API key, no server, no 
 ## The on-device assistant
 
 `analysis/train_assistant.py` generates about 2,400 example questions in the three languages, trains two multinomial Naive Bayes classifiers on character n-grams (one for the type of question, one for its language) and writes the weights to `app/ai-model.js` (about 125 KB). `app/ai-local.js` then finds districts, provinces, indicators, thresholds and direction in the question with rules, and computes the answer from the district table, using the user's current weights for anything about priority. Thirteen question types are covered: rankings, district profiles, comparisons, provinces, typologies, priorities, threshold filters, national figures, correlation, method, briefing notes, greetings, and polite refusal of off-topic questions. To teach it new phrasings, add examples in `train_assistant.py` and rerun it.
+
+## Why it fits the competition
+
+See [docs/CRITERIA_MAPPING.md](docs/CRITERIA_MAPPING.md) for each judging criterion with the evidence in this repository, [docs/NST2_ALIGNMENT.md](docs/NST2_ALIGNMENT.md) for the link to NST2 and Vision 2050, and [docs/PROBLEM_AND_SOLUTION.md](docs/PROBLEM_AND_SOLUTION.md) for a plain-language explanation and demo script.
 
 ## Methodology and limits
 

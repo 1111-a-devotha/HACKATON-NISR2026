@@ -4,13 +4,13 @@
 
 | By | Task |
 |---|---|
-| 6 Oct | Request EICV7 and FinScope 2024 microdata on microdata.statistics.gov.rw |
-| 10 Oct | Register the team (official deadline 20 Oct, 11:59 PM). Confirm at least one Rwandan citizen. |
-| 12 Oct | Verify all district values against the reports (docs/DATA_SOURCES.md checklist) |
-| 15 Oct | Push to a public GitHub repo and deploy the app |
-| 20 Oct | Native-speaker review of the Kinyarwanda and French text; review the assistant's answer templates; test with a SACCO or district planner |
+| 15 Oct | Push to a public GitHub repo, add the link to the README, redeploy |
+| by 20 Oct, 11:59 PM | **Register the team** (two students, at least one Rwandan citizen, student cards ready) |
+| by 20 Oct | Verify all district values against the reports (docs/DATA_SOURCES.md checklist) |
+| by 22 Oct | Native-speaker review of the Kinyarwanda and French text; test with a SACCO or district planner; request EICV7 and FinScope microdata if not yet requested |
 | 25 Oct | Phase 2 model if microdata arrived (below) |
-| 28 Oct | Final README, AI disclosure, demo video, submission |
+| 28 Oct | Both team members read and sign the AI disclosure; final README; demo video |
+| 30 Oct, 11:59 PM | **Submit** (GitHub link, deployed link, documentation) |
 
 ## Phase 2: household-level model (if EICV7 microdata is granted)
 

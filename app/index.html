@@ -5,26 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ntawusigara</title>
 <meta name="description" content="Find the Rwandan districts where poverty and financial exclusion overlap. Kinyarwanda, English, French. Built on NISR EICV7, FinScope 2024 and Census 2022 data.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ntawusigara: no one left behind">
+<meta property="og:description" content="Where poverty and financial exclusion overlap across Rwanda's 30 districts, with adjustable priorities and honest uncertainty. Kinyarwanda, English, Français.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#62192E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Spectral:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#FFFFFF; --panel:#F4F5F6; --ink:#20232B; --body:#363B45; --muted:#5D6470; --rule:#E1E4E8;
   --c1:#F6E7C8; --c2:#EBBE7A; --c3:#D07F45; --c4:#A3402F; --c5:#62192E;
-  --teal:#0E6E6E; --t-poor:#A3402F; --t-stall:#D07F45; --t-gap:#0E6E6E; --t-core:#4A5A8C;
+  --teal:#0E6E6E; --t-poor:#C2412B; --t-stall:#E09A00; --t-gap:#1A9E70; --t-core:#2A78D6;
+  --b00:#E8E8E8; --b10:#E4ACAC; --b20:#C85A5A; --b01:#B0D5DF; --b11:#AD9EA5; --b21:#985356; --b02:#64ACBE; --b12:#627F8C; --b22:#574249;
   --s-bank:#20232B; --s-formal:#0E6E6E; --s-inf:#D9A441; --s-exc:#A3402F; --onink:#FFFFFF; --focus:#D07F45;
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#14161B; --panel:#1D2027; --ink:#EEF0F3; --body:#CDD2DA; --muted:#9AA2AE; --rule:#2C313A;
   --c1:#3A3326; --c2:#7A5A2E; --c3:#B66A38; --c4:#D9724F; --c5:#F2A07A;
-  --teal:#4FB3B0; --t-poor:#E07A5F; --t-stall:#E3A15C; --t-gap:#4FB3B0; --t-core:#8FA2E0;
+  --teal:#4FB3B0; --t-poor:#F0566A; --t-stall:#B88E00; --t-gap:#0E9C8C; --t-core:#5A8CF0;
+  --b00:#4B505C; --b10:#7A3E48; --b20:#C9505C; --b01:#2D5F6E; --b11:#6A587A; --b21:#B35C86; --b02:#3D96AE; --b12:#8584BE; --b22:#E3A0D6;
   --s-bank:#EEF0F3; --s-formal:#4FB3B0; --s-inf:#E3B65A; --s-exc:#E07A5F; --onink:#14161B; --focus:#E3A15C;
 }}
 :root[data-theme="dark"]{
   --bg:#14161B; --panel:#1D2027; --ink:#EEF0F3; --body:#CDD2DA; --muted:#9AA2AE; --rule:#2C313A;
   --c1:#3A3326; --c2:#7A5A2E; --c3:#B66A38; --c4:#D9724F; --c5:#F2A07A;
-  --teal:#4FB3B0; --t-poor:#E07A5F; --t-stall:#E3A15C; --t-gap:#4FB3B0; --t-core:#8FA2E0;
+  --teal:#4FB3B0; --t-poor:#F0566A; --t-stall:#B88E00; --t-gap:#0E9C8C; --t-core:#5A8CF0;
+  --b00:#4B505C; --b10:#7A3E48; --b20:#C9505C; --b01:#2D5F6E; --b11:#6A587A; --b21:#B35C86; --b02:#3D96AE; --b12:#8584BE; --b22:#E3A0D6;
   --s-bank:#EEF0F3; --s-formal:#4FB3B0; --s-inf:#E3B65A; --s-exc:#E07A5F; --onink:#14161B; --focus:#E3A15C;
 }
 *,*::before,*::after{box-sizing:inherit}
@@ -53,7 +63,7 @@ header{padding:2.25rem 0 1.5rem;border-bottom:1px solid var(--rule)}
 .stat span{font-size:.9rem;color:var(--muted)}
 main{padding:2rem 0 3rem}
 .grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(18rem,1fr);gap:2rem;align-items:start}
-@media (max-width:56rem){.grid{grid-template-columns:1fr}}
+@media (max-width:56rem){.grid{grid-template-columns:minmax(0,1fr)}}
 .card{background:var(--panel);padding:1.25rem 1.4rem;border-radius:6px}
 .toolbar{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justify-content:space-between;margin-bottom:.75rem}
 .toolbar label{font-weight:600;color:var(--ink);font-size:.95rem}
@@ -87,7 +97,8 @@ input[type=range]{width:100%;accent-color:var(--c4);min-height:44px}
 .btn:disabled{opacity:.5;cursor:default}
 .btns{display:flex;gap:.6rem;flex-wrap:wrap}
 .dhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:baseline}
-.tag{display:inline-block;font-size:.85rem;font-weight:600;padding:.2rem .6rem;border-radius:999px;color:var(--onink)}
+.tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;padding:.15rem .6rem;border-radius:999px;color:var(--ink);background:var(--bg);border:1px solid var(--rule)}
+.tag i{width:.7rem;height:.7rem;border-radius:50%;display:inline-block}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:1rem;margin:1.25rem 0}
 .kpi b{display:block;font-family:'Spectral',Georgia,serif;font-size:1.7rem;color:var(--ink);line-height:1.1}
 .kpi span{font-size:.85rem;color:var(--muted)}
@@ -100,6 +111,18 @@ input[type=range]{width:100%;accent-color:var(--c4);min-height:44px}
 .pov .t i{display:block;height:100%;border-radius:2px}
 .opts{margin:.5rem 0 0;padding-left:1.2rem}
 .opts li{margin-bottom:.5rem;max-width:44rem}
+.ev-legend i.kl{height:.25rem;width:1.4rem;vertical-align:3px;border-radius:2px}
+.ev-legend i.kl.you{background:var(--c5)}.ev-legend i.kl.pov{background:var(--t-stall)}.ev-legend i.kl.rand{background:transparent;border-top:2px dashed var(--muted);height:0}
+.ev-ln{fill:none;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
+.ev-ln.you{stroke:var(--c5)}.ev-ln.pov{stroke:var(--t-stall)}.ev-ln.rand{stroke:var(--muted);stroke-width:2;stroke-dasharray:5 4}
+.ev-pt.you{fill:var(--c5)}.ev-pt.pov{fill:var(--t-stall)}.ev-pt{stroke:var(--panel);stroke-width:2}
+.steps{display:flex;flex-wrap:wrap;gap:.5rem 2rem;margin:1.4rem 0 0;padding:0;list-style:none;counter-reset:st}
+.steps li{counter-increment:st;max-width:20rem;font-size:.95rem}
+.steps li:before{content:counter(st);display:inline-grid;place-items:center;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--ink);color:var(--bg);font-weight:700;font-size:.85rem;margin-right:.55rem}
+.steps a{color:var(--ink);font-weight:600}
+.presets{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0 .4rem}
+.presets .btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.skey i{border-radius:2px}
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:2rem}
 .muted{color:var(--muted);font-size:.9rem}
 .ai-out{background:var(--bg);border:1px solid var(--rule);border-radius:4px;padding:1rem 1.2rem;white-space:pre-wrap;color:var(--ink);margin-top:.8rem}
@@ -129,6 +152,73 @@ footer{border-top:1px solid var(--rule);padding:1.5rem 0 2.5rem;font-size:.88rem
 .filebtn{position:relative;overflow:hidden;display:inline-flex;align-items:center}
 .filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer}
 td.up{color:var(--teal);font-weight:600} td.down{color:var(--c4);font-weight:600}
+
+/* ---- insights, evidence charts, bivariate legend, share ---- */
+.insights{margin-top:1.25rem;border-top:1px solid var(--rule);padding-top:1rem}
+.insights h3{font-size:1.1rem;margin-bottom:.6rem}
+.ins-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1rem}
+.ins b{display:block;font-family:'Spectral',Georgia,serif;font-size:1.9rem;color:var(--ink);line-height:1}
+.ins span{font-size:.88rem;color:var(--muted)}
+.ev-tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin:1rem 0 .4rem;border-bottom:1px solid var(--rule)}
+.ev-tab{text-align:left;background:transparent;border:0;border-bottom:3px solid transparent;color:var(--muted);font-weight:600;padding:.55rem .7rem;min-height:44px;cursor:pointer;margin-bottom:-1px}
+.ev-tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--c4)}
+.ev-tab:hover{color:var(--ink)}
+.ev-ctl{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:.8rem 0 .2rem}
+.ev-ctl label{font-weight:600;color:var(--ink);font-size:.92rem}
+.ev-ctl .ev-png{margin-left:auto}
+.ev-take{font-size:1.02rem;color:var(--ink);margin:.7rem 0 .4rem;max-width:52rem}
+.ev-legend{display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;font-size:.85rem;color:var(--body);margin:.4rem 0}
+.ev-legend i{display:inline-block;width:.8rem;height:.8rem;margin-right:.35rem;vertical-align:-1px;border-radius:2px}
+.ev-legend i.dot{border-radius:50%}
+.ev-legend i.ev-k17{border-radius:50%;border:2px solid var(--muted);background:var(--panel)}
+.ev-legend i.ev-k24{border-radius:50%;background:var(--c5)}
+.ev-legend i.ev-kst{height:.25rem;width:1.2rem;vertical-align:3px;background:var(--t-stall)}
+.ev-plot{width:100%;overflow:hidden}
+.ev-svg{display:block;max-width:100%;font-family:'Libre Franklin',Arial,sans-serif}
+.ev-grid{stroke:var(--rule);stroke-width:1}
+.ev-axis{stroke:var(--muted);stroke-width:1}
+.ev-ref{stroke:var(--muted);stroke-width:1;stroke-dasharray:4 3}
+.ev-quad{fill:var(--c4);fill-opacity:.07}
+.ev-band{fill:var(--c3);fill-opacity:.12}
+.ev-tick{fill:var(--muted);font-size:11px}
+.ev-alab{fill:var(--body);font-size:12px;font-weight:600}
+.ev-note{fill:var(--muted);font-size:11px}
+.ev-qlab{fill:var(--c4);font-size:12px;font-weight:700}
+.ev-dot{fill-opacity:.82;stroke:var(--panel);stroke-width:1.5;transition:stroke-width .15s}
+.ev-dot:hover,.ev-dot:focus{stroke:var(--ink);stroke-width:2;outline:none}
+.ev-dot.sel{stroke:var(--ink);stroke-width:3;fill-opacity:1}
+.ev-dlab{fill:var(--ink);font-size:11.5px;font-weight:600;paint-order:stroke;stroke:var(--panel);stroke-width:3px;pointer-events:none}
+.ev-dlab.sel{font-weight:800}
+.ev-ylab{fill:var(--body);font-size:11.5px}
+.ev-ylab.strong{fill:var(--ink);font-weight:700}
+.ev-val{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.ev-val.strong{fill:var(--ink);font-weight:700}
+.ev-hit{fill:transparent}
+.ev-row:hover .ev-hit,.ev-row:focus .ev-hit{fill:var(--rule);fill-opacity:.55}
+.ev-row:focus{outline:none}
+.ev-row.sel .ev-hit{fill:var(--c2);fill-opacity:.35}
+.ev-row.sel .ev-ylab{fill:var(--ink);font-weight:800}
+.ev-bar-line{stroke:var(--muted);stroke-width:2;stroke-opacity:.6}
+.ev-bar-line.stall{stroke:var(--t-stall);stroke-width:3;stroke-opacity:1}
+.ev-d17{fill:var(--panel);stroke:var(--muted);stroke-width:2}
+.ev-d24{fill:var(--c5);stroke:var(--panel);stroke-width:1.5}
+.ev-d24.stall{fill:var(--t-stall)}
+.ev-range{stroke:var(--muted);stroke-width:2;stroke-linecap:round}
+.ev-range.strong{stroke:var(--c4);stroke-width:3}
+.ev-rk{fill:var(--panel);stroke:var(--muted);stroke-width:2}
+.ev-rk.strong{fill:var(--c4);stroke:var(--panel)}
+.ev-pbar{fill:var(--c4)}
+.ev-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1.5rem}
+.ev-h4{font-family:'Libre Franklin',Arial,sans-serif;font-size:.95rem;color:var(--ink);margin:.4rem 0}
+.ntw-tip{position:fixed;z-index:20;display:none;pointer-events:none;background:var(--ink);color:var(--onink);font-size:.82rem;line-height:1.4;padding:.5rem .7rem;border-radius:4px;max-width:18rem;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.ntw-tip .h{font-weight:700;margin-bottom:.15rem}
+.biv{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.biv svg{width:auto;height:auto;flex:none}
+.biv text{font-size:10px;fill:var(--muted)}
+.biv p{margin:0;font-size:.85rem;color:var(--muted);max-width:22rem}
+#colorBy,.ev-ctl select{max-width:100%;min-width:0}
+.toolbar>div{max-width:100%;min-width:0}
+.share-msg{font-size:.88rem;color:var(--teal);margin:.6rem 0 0;min-height:1.2em}
 #report{display:none}
 @media print{
   @page{size:A4;margin:14mm}
@@ -155,7 +245,9 @@ td.up{color:var(--teal);font-weight:600} td.down{color:var(--c4);font-weight:600
 <header><div class="wrap">
   <h1>Ntawusigara</h1>
   <p class="lede" data-i="lede"></p>
+  <noscript><p>Ntawusigara shows where poverty and financial exclusion overlap across Rwanda's 30 districts (NISR EICV7, FinScope 2024, Census 2022). It needs JavaScript to draw the map, ranking and charts; the full district table is in the repository (data/processed/district_index.csv).</p></noscript>
   <div class="stats" id="stats"></div>
+  <ol class="steps" id="steps" aria-label="Start here"><li><a href="#mapH" data-i="stp1"></a></li><li><a href="#wH" data-i="stp2"></a></li><li><a href="#detail" data-i="stp3"></a></li></ol>
 </div></header>
 
 <main class="wrap">
@@ -168,6 +260,7 @@ td.up{color:var(--teal);font-weight:600} td.down{color:var(--c4);font-weight:600
       </div>
       <div class="map"><svg id="map" role="group"></svg></div>
       <div class="legend" id="legend"></div>
+      <div class="insights" id="insights" aria-live="polite"></div>
     </section>
     <section class="card" aria-labelledby="rankH">
       <h2 id="rankH" data-i="rankH"></h2>
@@ -179,10 +272,22 @@ td.up{color:var(--teal);font-weight:600} td.down{color:var(--c4);font-weight:600
 
   <section class="block card" aria-labelledby="wH">
     <div class="toolbar"><h2 id="wH" data-i="wH"></h2>
-      <div class="btns"><button class="btn ghost" id="reset" type="button" data-i="reset"></button><button class="btn" id="dl" type="button" data-i="dl"></button></div></div>
+      <div class="btns"><button class="btn ghost" id="share" type="button"></button><button class="btn ghost" id="reset" type="button" data-i="reset"></button><button class="btn" id="dl" type="button" data-i="dl"></button></div></div>
     <p style="margin:0" data-i="wP"></p>
+    <h3 data-i="presH" style="margin:1.2rem 0 .2rem"></h3><p class="muted" style="margin:0" data-i="presP"></p>
+    <div class="presets" id="presets" role="group"></div>
+    <p class="muted" id="presNote" aria-live="polite" style="margin:0 0 .3rem"></p>
+    <p id="presCons" style="margin:0 0 1rem;color:var(--ink);font-weight:600"></p>
     <div class="wgrid" id="wgrid"></div>
     <p id="robustNote" style="margin:1.2rem 0 0;font-size:.92rem"></p>
+    <p class="share-msg" id="shareMsg" aria-live="polite"></p>
+  </section>
+
+  <section class="block card" id="evSec" aria-labelledby="evH">
+    <h2 id="evH"></h2>
+    <p style="margin:.5rem 0 0" id="evP"></p>
+    <div class="ev-tabs" role="tablist" id="evTabs"></div>
+    <div id="evPanel" role="tabpanel"></div>
   </section>
 
   <section class="block card" id="detail" aria-live="polite"></section>
@@ -250,6 +355,7 @@ td.up{color:var(--teal);font-weight:600} td.down{color:var(--c4);font-weight:600
 
 <script src="data.js"></script>
 <script src="ntw-tools.js"></script>
+<script src="ntw-charts.js"></script>
 <script src="ai-model.js"></script>
 <script src="ai-local.js"></script>
 <script>
@@ -259,7 +365,7 @@ var W = Object.assign({}, S.default_weights), sel = null, colorBy = 'priority_in
 var TYP = ['Poor and under-served','Stalled progress','Lower poverty, finance gaps','Banked urban core'];
 var TCOL = {'Poor and under-served':'var(--t-poor)','Stalled progress':'var(--t-stall)','Lower poverty, finance gaps':'var(--t-gap)','Banked urban core':'var(--t-core)'};
 var SCALE = ['var(--c1)','var(--c2)','var(--c3)','var(--c4)','var(--c5)'];
-var COLOR_KEYS = ['priority_index','poverty_2024','poor_people','not_formally_served','banked','poverty_drop_pp','typology'];
+var COLOR_KEYS = ['priority_index','overlap','poverty_2024','poor_people','not_formally_served','banked','poverty_drop_pp','typology'];
 
 var T = {
 en:{
@@ -269,7 +375,12 @@ en:{
   cb:{priority_index:'Priority index',poverty_2024:'Poverty rate 2024',poor_people:'Number of poor people',not_formally_served:'Adults not formally served',banked:'Adults with a bank account',poverty_drop_pp:'Poverty fall since 2017',typology:'District typology'},
   lower:'Lower', higher:'Higher', fifths:'(fifths of districts)',
   rankH:'Priority ranking', rankP:'Higher score means a stronger case for combined poverty and financial inclusion support. Select a district for details.',
-  wH:'Set your priorities', reset:'Reset to default weights', dl:'Download ranking (CSV)',
+  wH:'Set your priorities',
+  startH:'Start here', stp1:'See on the map where poverty and finance gaps overlap', stp2:'Pick a planning lens or move the sliders', stp3:'Open a district, write its briefing note and copy the link',
+  presCons:'Top 5 under at least 3 of the 5 lenses: {l}.',
+  presH:'Start from a planning lens', presP:'Different planners ask different questions. Pick a lens to set the weights, then adjust them if you wish.',
+  pre:{balanced:'Balanced (default)',social:'Social protection',finance:'Financial inclusion',stalled:'Where progress stalled',reach:'Reach the most people'}, preCustom:'Custom weights', preNote:'Top 5 under this lens: {l}.',
+  whyH:'Why this score?', whyNote:'Each segment shows what one indicator adds to the 0 to 100 score, using your weights.', whyTop:'Largest contribution: {k}.', reset:'Reset to default weights', dl:'Download ranking (CSV)',
   wP:'Each slider sets how much an indicator counts in the priority index. Weights are rescaled to add up to 100%. The ranking and map update as you move them.',
   ind:{poverty_2024:'Poverty rate',poor_people:'Number of poor people',not_formally_served:'Not formally served',unbanked:'Unbanked',progress_lag:'Slow poverty reduction'},
   hint:{poverty_2024:'Share of people below the poverty line (EICV7)',poor_people:'Poverty rate times 2022 population',not_formally_served:'Adults using only informal finance or none (FinScope)',unbanked:'Adults without a bank account (FinScope)',progress_lag:'Smaller poverty fall since 2017 counts more'},
@@ -352,7 +463,12 @@ rw:{
   cb:{priority_index:"Igipimo cy'ibyihutirwa",poverty_2024:"Igipimo cy'ubukene 2024",poor_people:'Umubare w\'abakene',not_formally_served:'Abakuru badakoresha serivisi zemewe',banked:'Abakuru bafite konti muri banki',poverty_drop_pp:"Igabanuka ry'ubukene kuva 2017",typology:"Ubwoko bw'akarere"},
   lower:'Gito', higher:'Kinini', fifths:"(ibice bitanu by'uturere)",
   rankH:"Urutonde rw'ibyihutirwa", rankP:"Amanota menshi asobanura ko akarere gakeneye cyane gufashwa ku bukene no kuri serivisi z'imari. Hitamo akarere urebe ibisobanuro.",
-  wH:'Shyiraho ibyo uha agaciro', reset:'Subiza uko byari bimeze', dl:'Kuramo urutonde (CSV)',
+  wH:'Shyiraho ibyo uha agaciro',
+  startH:'Tangirira hano', stp1:"Reba ku ikarita aho ubukene n'ibura ry'serivisi z'imari bihurira", stp2:'Hitamo icyerekezo cyo gutegura cyangwa wimure uburemere', stp3:"Fungura akarere, wandike inyandiko ngufi, wandukure umurongo",
+  presCons:"Uturere tuza mu 5 bya mbere nibura mu byerekezo 3 muri 5: {l}.",
+  presH:'Tangirira ku cyerekezo cyo gutegura', presP:"Abategura gahunda bafite ibibazo bitandukanye. Hitamo icyerekezo kigena uburemere, hanyuma ubuhindure nibiba ngombwa.",
+  pre:{balanced:'Buringaniye (busanzwe)',social:"Kurengera abaturage",finance:"Kwinjiza mu bigo by'imari",stalled:'Aho iterambere ryadindiye',reach:'Kugera ku bantu benshi'}, preCustom:'Uburemere wihitiyemo', preNote:"Uturere 5 tw'imbere kuri iki cyerekezo: {l}.",
+  whyH:'Kuki afite aya manota?', whyNote:"Buri gice kigaragaza amanota indicator imwe yongera ku manota 0 kugeza 100, hakoreshejwe uburemere wahisemo.", whyTop:'Ikintu gifite uruhare runini: {k}.', reset:'Subiza uko byari bimeze', dl:'Kuramo urutonde (CSV)',
   wP:"Buri gipimo kigaragaza uburemere buri kimenyetso gifite mu gipimo cy'ibyihutirwa. Uburemere buhindurwa bugateranwa bukagera ku 100%. Urutonde n'ikarita bihinduka uko ubyimura.",
   ind:{poverty_2024:"Igipimo cy'ubukene",poor_people:"Umubare w'abakene",not_formally_served:'Badakoresha serivisi zemewe',unbanked:'Badafite konti ya banki',progress_lag:"Igabanuka rito ry'ubukene"},
   hint:{poverty_2024:"Abari munsi y'umurongo w'ubukene (EICV7)",poor_people:"Igipimo cy'ubukene × abaturage 2022",not_formally_served:"Abakoresha imari itemewe gusa cyangwa ntacyo (FinScope)",unbanked:"Abakuru badafite konti ya banki (FinScope)",progress_lag:"Igabanuka rito kuva 2017 rihabwa uburemere"},
@@ -435,7 +551,12 @@ fr:{
   cb:{priority_index:'Indice de priorité',poverty_2024:'Taux de pauvreté 2024',poor_people:'Nombre de personnes pauvres',not_formally_served:'Adultes hors finance formelle',banked:'Adultes avec un compte bancaire',poverty_drop_pp:'Baisse de la pauvreté depuis 2017',typology:'Typologie des districts'},
   lower:'Plus faible', higher:'Plus élevé', fifths:'(quintiles de districts)',
   rankH:'Classement des priorités', rankP:"Un score élevé signale un besoin plus fort d'appui conjoint contre la pauvreté et pour l'inclusion financière. Sélectionnez un district pour le détail.",
-  wH:'Définissez vos priorités', reset:'Rétablir les poids par défaut', dl:'Télécharger le classement (CSV)',
+  wH:'Définissez vos priorités',
+  startH:'Commencer ici', stp1:'Voyez sur la carte où pauvreté et écarts financiers se cumulent', stp2:'Choisissez un angle de planification ou déplacez les curseurs', stp3:'Ouvrez un district, générez sa note et copiez le lien',
+  presCons:'Top 5 sous au moins 3 des 5 angles : {l}.',
+  presH:'Partir d’un angle de planification', presP:'Chaque planificateur pose une question différente. Choisissez un angle pour fixer les pondérations, puis ajustez-les si besoin.',
+  pre:{balanced:'Équilibré (par défaut)',social:'Protection sociale',finance:'Inclusion financière',stalled:'Là où les progrès ont calé',reach:'Toucher le plus de personnes'}, preCustom:'Pondérations personnalisées', preNote:'Top 5 sous cet angle : {l}.',
+  whyH:'Pourquoi ce score ?', whyNote:'Chaque segment montre ce qu’un indicateur ajoute au score de 0 à 100, avec vos pondérations.', whyTop:'Contribution la plus forte : {k}.', reset:'Rétablir les poids par défaut', dl:'Télécharger le classement (CSV)',
   wP:"Chaque curseur fixe le poids d'un indicateur dans l'indice. Les poids sont ramenés à 100 %. Le classement et la carte se mettent à jour en direct.",
   ind:{poverty_2024:'Taux de pauvreté',poor_people:'Nombre de pauvres',not_formally_served:'Hors finance formelle',unbanked:'Non bancarisés',progress_lag:'Recul lent de la pauvreté'},
   hint:{poverty_2024:'Part de la population sous le seuil de pauvreté (EICV7)',poor_people:'Taux de pauvreté × population 2022',not_formally_served:'Adultes utilisant seulement l\'informel, ou rien (FinScope)',unbanked:'Adultes sans compte bancaire (FinScope)',progress_lag:'Une baisse plus faible depuis 2017 compte davantage'},
@@ -536,7 +657,14 @@ Object.keys(D.shapes.d).forEach(function(n){if(n==='Nyarugenge'||n==='Kicukiro')
 function breaks(key){var v=rows.map(function(r){return key==='priority_index'?r.score:r[key];}).sort(function(a,b){return a-b;});return [0.2,0.4,0.6,0.8].map(function(q){return v[Math.floor(q*(v.length-1))];});}
 function drawMap(){
   var lg=$('legend');lg.textContent='';
-  if(colorBy==='typology'){rows.forEach(function(r){paths[r.district].style.fill=TCOL[r.typology];});
+  if(colorBy==='overlap'){var tq=function(k){var v=rows.map(function(r){return r[k];}).sort(function(a,b){return a-b;});return [v[9],v[19]];},qp=tq('poverty_2024'),qe=tq('not_formally_served'),cls=function(v,q){return v>q[1]?2:v>q[0]?1:0;};
+    rows.forEach(function(r){paths[r.district].style.fill='var(--b'+cls(r.poverty_2024,qp)+cls(r.not_formally_served,qe)+')';});
+    var bx=el('div','biv'),bs=document.createElementNS(NS,'svg'),cz=16,ox=16;bs.setAttribute('width',ox+cz*3+4);bs.setAttribute('height',cz*3+18);bs.setAttribute('aria-hidden','true');
+    for(var yi=0;yi<3;yi++)for(var xi=0;xi<3;xi++){var rc=document.createElementNS(NS,'rect');rc.setAttribute('x',ox+xi*cz);rc.setAttribute('y',(2-yi)*cz);rc.setAttribute('width',cz-1);rc.setAttribute('height',cz-1);rc.style.fill='var(--b'+yi+xi+')';bs.appendChild(rc);}
+    var ax=document.createElementNS(NS,'text');ax.setAttribute('x',ox);ax.setAttribute('y',cz*3+12);ax.textContent=NtwCharts.s('bivX')+' →';bs.appendChild(ax);
+    var ay=document.createElementNS(NS,'text');ay.setAttribute('transform','translate(10,'+(cz*3)+') rotate(-90)');ay.textContent=NtwCharts.s('bivY')+' →';bs.appendChild(ay);
+    bs.setAttribute('width',Math.max(ox+cz*3+4,ax.textContent.length*5.6+ox));bx.appendChild(bs);bx.appendChild(el('p',null,NtwCharts.s('bivNote')));lg.appendChild(bx);}
+  else if(colorBy==='typology'){rows.forEach(function(r){paths[r.district].style.fill=TCOL[r.typology];});
     TYP.forEach(function(k){var s=el('span');var i=el('i');i.style.background=TCOL[k];s.appendChild(i);s.appendChild(document.createTextNode(t('typ')[k]));lg.appendChild(s);});}
   else{var br=breaks(colorBy),inv=colorBy==='banked'||colorBy==='poverty_drop_pp';
     rows.forEach(function(r){var v=colorBy==='priority_index'?r.score:r[colorBy],c=0;br.forEach(function(b){if(v>b)c++;});paths[r.district].style.fill=SCALE[inv?4-c:c];});
@@ -556,8 +684,35 @@ function drawRank(s){var ol=$('rank');ol.textContent='';s.slice(0,12).forEach(fu
 IND.forEach(function(i){var d=el('div','w');var l=el('label');l.setAttribute('for','w_'+i.key);l.appendChild(el('span',null,''));var o=el('output');o.id='o_'+i.key;l.appendChild(o);
   var inp=el('input');inp.type='range';inp.min='0';inp.max='100';inp.step='5';inp.id='w_'+i.key;inp.addEventListener('input',function(){W[i.key]=parseInt(inp.value,10)/100;update();});
   var sm=el('small');d.appendChild(l);d.appendChild(inp);d.appendChild(sm);d.dataset.key=i.key;$('wgrid').appendChild(d);});
-function drawWeights(){var tot=IND.reduce(function(a,i){return a+W[i.key];},0)||1;[].forEach.call($('wgrid').children,function(d){var k=d.dataset.key;d.querySelector('label span').textContent=t('ind')[k];d.querySelector('small').textContent=t('hint')[k];
+function drawWeights(){drawPresets();var tot=IND.reduce(function(a,i){return a+W[i.key];},0)||1;[].forEach.call($('wgrid').children,function(d){var k=d.dataset.key;d.querySelector('label span').textContent=t('ind')[k];d.querySelector('small').textContent=t('hint')[k];
   $('w_'+k).value=Math.round(W[k]*100);$('o_'+k).textContent=pc(Math.round(W[k]/tot*100));});}
+
+// Planning lenses: preset weights for different kinds of planner
+var PRESETS={
+  balanced:S.default_weights,
+  social:{poverty_2024:.40,poor_people:.35,not_formally_served:.05,unbanked:.05,progress_lag:.15},
+  finance:{poverty_2024:.15,poor_people:.10,not_formally_served:.35,unbanked:.30,progress_lag:.10},
+  stalled:{poverty_2024:.30,poor_people:.10,not_formally_served:.05,unbanked:.05,progress_lag:.50},
+  reach:{poverty_2024:.20,poor_people:.60,not_formally_served:.10,unbanked:.05,progress_lag:.05}};
+function presetActive(){var f=null;Object.keys(PRESETS).forEach(function(k){if(IND.every(function(i){return Math.abs(PRESETS[k][i.key]-W[i.key])<0.0051;}))f=f||k;});return f;}
+function drawPresets(){var box=$('presets');box.textContent='';var act=presetActive();
+  Object.keys(PRESETS).forEach(function(k){var b=el('button','btn ghost',t('pre')[k]);b.type='button';b.setAttribute('aria-pressed',act===k?'true':'false');if(act===k)b.classList.add('on');
+    b.addEventListener('click',function(){W=Object.assign({},PRESETS[k]);update();});box.appendChild(b);});
+  var s=compute().slice(0,5).map(function(r){return r.district;}).join(', ');
+  $('presNote').textContent=(act?t('pre')[act]:t('preCustom'))+'. '+t('preNote',{l:s});
+  var cnt={};Object.keys(PRESETS).forEach(function(k){var Wp=PRESETS[k],tt=IND.reduce(function(a,i){return a+Wp[i.key];},0)||1;
+    rows.map(function(r){return {d:r.district,v:IND.reduce(function(a,i){return a+r['n_'+i.key]*Wp[i.key];},0)/tt};}).sort(function(a,b){return b.v-a.v;}).slice(0,5).forEach(function(x){cnt[x.d]=(cnt[x.d]||0)+1;});});
+  var cons=Object.keys(cnt).filter(function(d){return cnt[d]>=3;}).sort(function(a,b){return cnt[b]-cnt[a]||(a<b?-1:1);}).map(function(d){return d+' ('+cnt[d]+'/5)';});
+  $('presCons').textContent=cons.length?t('presCons',{l:cons.join(', ')}):'';}
+var WHYC=['#4E79A7','#F28E2B','#59A14F','#B07AA1','#9C755F'];
+function drawWhy(box,r){var tot=IND.reduce(function(a,i){return a+W[i.key];},0)||1;
+  var parts=IND.map(function(i,ix){return {k:i.key,v:r['n_'+i.key]*W[i.key]/tot*100,c:WHYC[ix%WHYC.length]};});
+  box.appendChild(el('h3',null,t('whyH')));var st=el('div','strand');st.setAttribute('role','img');
+  st.setAttribute('aria-label',parts.map(function(p){return t('ind')[p.k]+' '+dec(p.v,1);}).join(', '));
+  parts.forEach(function(p){var i=el('i');i.style.width=p.v+'%';i.style.background=p.c;st.appendChild(i);});box.appendChild(st);
+  var sk=el('div','skey');parts.forEach(function(p){var s=el('span');var i=el('i');i.style.background=p.c;s.appendChild(i);s.appendChild(document.createTextNode(t('ind')[p.k]+' '+dec(p.v,1)));sk.appendChild(s);});box.appendChild(sk);
+  var top=parts.slice().sort(function(a,b){return b.v-a.v;})[0];
+  box.appendChild(el('p','muted',t('whyTop',{k:t('ind')[top.k]})+' '+t('whyNote')));}
 $('reset').addEventListener('click',function(){W=Object.assign({},S.default_weights);update();});
 
 function options(r){var o=[];
@@ -569,13 +724,14 @@ function options(r){var o=[];
   if(r.banked>=40)o.push(t('o6',{n:fmt(r.poor_people)}));
   if(!o.length)o.push(t('o7'));return o.slice(0,3);}
 
-function pick(n){sel=n;briefState=null;drawMap();drawDetail();$('detail').scrollIntoView({behavior:window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}
+function pick(n){sel=n;briefState=null;drawMap();drawDetail();charts();saveState();$('detail').scrollIntoView({behavior:window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}
 var briefState=null;
 function drawDetail(){var box=$('detail');box.textContent='';
   if(!sel){box.appendChild(el('h2',null,t('dH')));box.appendChild(el('p',null,t('dPick')));return;}
-  var r=by[sel],h=el('div','dhead');h.appendChild(el('h2',null,r.district));var sub=el('div');var tag=el('span','tag',t('typ')[r.typology]);tag.style.background=TCOL[r.typology];sub.appendChild(tag);
+  var r=by[sel],h=el('div','dhead');h.appendChild(el('h2',null,r.district));var sub=el('div');var tag=el('span','tag');var tdot=el('i');tdot.style.background=TCOL[r.typology];tag.appendChild(tdot);tag.appendChild(document.createTextNode(t('typ')[r.typology]));sub.appendChild(tag);
   sub.appendChild(document.createTextNode('  '+t('prov')[r.province]+', '+t('rankOf',{r:r.rank})));h.appendChild(sub);box.appendChild(h);box.appendChild(el('p','muted',t('typNote')[r.typology]));
   var k=el('div','kpis');[[r.score.toFixed(0),t('k1')],[fmt(r.poor_people),t('k2')],[fmt(r.population_2022),t('k3')],[pc(r.top5_robustness_pct),t('k4')]].concat(RANGES[r.district]?[[likely(r),t('k5')]]:[]).forEach(function(x){var d=el('div','kpi');d.appendChild(el('b',null,x[0]));d.appendChild(el('span',null,x[1]));k.appendChild(d);});box.appendChild(k);
+  drawWhy(box,r);
   var cols=el('div','cols'),c1=el('div');c1.appendChild(el('h3',null,t('povH')));
   [['2017*',r.poverty_2017_modelled,'var(--c3)'],['2024',r.poverty_2024,'var(--c5)'],[t('rwanda'),27.4,'var(--muted)']].forEach(function(x){var p=el('div','pov');p.appendChild(el('span',null,x[0]));var tt=el('div','t');var i=el('i');i.style.width=(x[1]/70*100)+'%';i.style.background=x[2];tt.appendChild(i);p.appendChild(tt);p.appendChild(el('b',null,pc(x[1])));c1.appendChild(p);});
   c1.appendChild(el('p','muted',t('povNote',{n:dec(r.poverty_drop_pp)})));
@@ -596,7 +752,7 @@ function drawTable(s){var tb=$('table');tb.textContent='';var keys=['rank','dist
 $('dl').addEventListener('click',function(){var s=compute(),head=['rank','district','province','score','poverty_2024','poor_people','banked','other_formal_only','informal_only','excluded','poverty_drop_pp','top5_robustness_pct','typology'];
   var lines=[head.join(',')].concat(s.map(function(r){return head.map(function(h){var v=h==='score'?r.score.toFixed(1):r[h];return /,/.test(String(v))?'"'+v+'"':v;}).join(',');}));lines.push('');lines.push('weights,'+IND.map(function(i){return i.key+'='+W[i.key];}).join(';'));
   var blob=new Blob([lines.join('\n')],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ntawusigara_ranking.csv';document.body.appendChild(a);a.click();a.remove();});
-$('colorBy').addEventListener('change',function(e){colorBy=e.target.value;drawMap();});
+$('colorBy').addEventListener('change',function(e){colorBy=e.target.value;drawMap();saveState();});
 
 // ---------- AI (on-device model, see app/ai-local.js; no API, works offline) ----------
 var aiReady=!!window.NtwLocalAI,aiBusy=false,typer=null;
@@ -666,14 +822,25 @@ $('cmpFile').addEventListener('change',function(e){var f=e.target.files[0];if(!f
 function applyLang(){document.documentElement.lang=lang;document.title='Ntawusigara · '+t('mapH');
   document.querySelectorAll('[data-i]').forEach(function(n){n.textContent=t(n.getAttribute('data-i'));});
   document.querySelectorAll('[data-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===lang?'true':'false');});
-  svg.setAttribute('aria-label',t('mapAria'));
-  var cb=$('colorBy');cb.textContent='';COLOR_KEYS.forEach(function(k){var o=el('option',null,t('cb')[k]);o.value=k;cb.appendChild(o);});cb.value=colorBy;
+  svg.setAttribute('aria-label',t('mapAria'));$('share').textContent=NtwCharts.s('shareBtn');
+  var cb=$('colorBy');cb.textContent='';COLOR_KEYS.forEach(function(k){var o=el('option',null,k==='overlap'?NtwCharts.s('cbOverlap'):t('cb')[k]);o.value=k;cb.appendChild(o);});cb.value=colorBy;
   var st=$('stats');st.textContent='';[[fmt(S.estimated_poor_people),t('st1')],[pc(27.4),t('st2')],[pc(92),t('st3')],[S.robust_top5.length,t('st4')]].forEach(function(s){var d=el('div','stat');d.appendChild(el('b',null,s[0]));d.appendChild(el('span',null,s[1]));st.appendChild(d);});
   update();drawAI();if(lastCmp)showCompare(lastCmp.rows,lastCmp.demo);}
-function update(){drawWeights();var s=compute();computeRanges();drawRank(s);drawAlloc();drawMap();drawTable(s);drawDetail();$('robustNote').textContent=t('robust')+S.robust_top5.join(', ')+'.';}
+function update(){drawWeights();var s=compute();computeRanges();drawRank(s);drawAlloc();drawMap();drawTable(s);drawDetail();$('robustNote').textContent=t('robust')+S.robust_top5.join(', ')+'.';charts();saveState();}
+function charts(){if(!window.NtwCharts)return;NtwCharts.update({lang:lang});}
+// ---------- Shareable view: weights, language, map colouring and district live in the URL ----------
+function saveState(){try{var q='w='+IND.map(function(i){return Math.round(W[i.key]*100);}).join('-')+'&l='+lang+(colorBy!=='priority_index'?'&c='+colorBy:'')+(sel?'&d='+encodeURIComponent(sel):'');history.replaceState(null,'','#'+q);}catch(e){}}
+function loadState(){try{var h=location.hash.slice(1);if(!h)return false;var p={};h.split('&').forEach(function(kv){var i=kv.indexOf('=');if(i>0)p[kv.slice(0,i)]=decodeURIComponent(kv.slice(i+1));});
+  if(p.w){var a=p.w.split('-').map(Number);if(a.length===IND.length&&a.every(function(x){return x>=0&&x<=100;}))IND.forEach(function(ind,i){W[ind.key]=a[i]/100;});}
+  if(p.l&&T[p.l])lang=p.l;if(p.c&&COLOR_KEYS.indexOf(p.c)>=0)colorBy=p.c;if(p.d&&by[p.d])sel=p.d;return !!p.l;}catch(e){return false;}}
+$('share').addEventListener('click',function(){saveState();var u=location.href,done=function(){$('shareMsg').textContent=NtwCharts.s('copied');setTimeout(function(){$('shareMsg').textContent='';},5000);};
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(u).then(done,function(){window.prompt('',u);});else{window.prompt('',u);}});
 document.querySelectorAll('[data-lang]').forEach(function(b){b.addEventListener('click',function(){lang=b.dataset.lang;try{localStorage.setItem('ntw-lang',lang);}catch(e){}applyLang();});});
-try{var sv=localStorage.getItem('ntw-lang');if(sv&&T[sv])lang=sv;else{var nl=(navigator.language||'').slice(0,2);if(T[nl])lang=nl;}}catch(e){}
+var fromLink=loadState();
+if(!fromLink){try{var sv=localStorage.getItem('ntw-lang');if(sv&&T[sv])lang=sv;else{var nl=(navigator.language||'').slice(0,2);if(T[nl])lang=nl;}}catch(e){}}
+NtwCharts.init({rows:rows,lang:lang,t:t,fmt:fmt,pc:pc,dec:dec,national:S.national,pick:pick,getSel:function(){return sel;},getRanges:function(){return RANGES;}});
 applyLang();
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}
 })();
 </script>
 </body>
