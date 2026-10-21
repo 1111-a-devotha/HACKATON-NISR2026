@@ -43,6 +43,26 @@ K-means (k = 4, 50 initialisations, standardised features) on poverty rate, shar
 
 We chose k = 4 for interpretability with 30 districts; the typology is descriptive, not a statistical finding.
 
+### Planning lenses
+
+The app offers five preset weight sets so that different planners can start from their own question: balanced (the default above), social protection (poverty rate 0.40, number of poor 0.35, not formally served 0.05, unbanked 0.05, slow progress 0.15), financial inclusion (0.15, 0.10, 0.35, 0.30, 0.10), where progress stalled (0.30, 0.10, 0.05, 0.05, 0.50) and reach the most people (0.20, 0.60, 0.10, 0.05, 0.05). The presets are judgement calls, not estimates, and are shown with their own top five so users can see how much the answer depends on them. Users can move any slider afterwards.
+
+### Consensus across lenses
+
+For each of the five lenses we take the top five districts and count how many lenses each district reaches. With the preset weights above: Gisagara 4 of 5; Nyamagabe, Nyanza and Rusizi 3 of 5; Nyamasheke, Nyagatare, Ngoma and Rubavu 2 of 5. Districts in at least three lenses are shown in the app as the choices that hold up whatever a planner values.
+
+### Targeting reach
+
+For k = 1 to 30 districts taken from the top of a ranking, the tool adds up (a) the poor people (poverty rate x 2022 population) and (b) the adults not formally served in those districts and shows each as a share of the national total. It compares three rules: the user's own ranking, poverty rate alone, and random choice (the expected share is k/30 of districts). Because FinScope gives percentages of adults and the district files carry no adult population, "adults not formally served" is approximated by the percentage times total population; this assumes a similar adult share in every district, and the chart says so. With the default weights and k = 10 the ranking reaches 50% of poor people and 39% of adults outside formal finance; poverty rate alone reaches 48% and 35%; random choice reaches about 33%. The gain over poverty rate alone is small for poor people and larger for finance gaps, which is what a combined index is meant to give. It is not a causal estimate of programme impact.
+
+### Score breakdown
+
+A district's score is the sum of five terms, `100 x w_i x scaled_i / sum(w)`. The "Why this score?" bar in each district profile shows these five terms, so the largest term is the main reason for the rank under the current weights.
+
+### "Stalled progress"
+
+The charts and insights list districts where poverty fell by less than 7 points since 2017 (Kicukiro, Ngoma, Burera, Nyanza, Nyarugenge, Rwamagana). The k-means "Stalled progress" typology is narrower (Nyanza, Ngoma, Burera, Rwamagana) because it also uses poverty level and finance indicators. Kicukiro and Nyarugenge have a small absolute fall but already low poverty, so read them with care.
+
 ## 6. Options to consider
 
 District profiles show up to three prompts triggered by simple rules (for example, more than 12% of adults not formally served). The suggested responses come from FinScope 2024's own recommendations and barriers (phone ownership as the main barrier to mobile money; collateral as a barrier to credit). They are discussion prompts, not evaluated interventions.

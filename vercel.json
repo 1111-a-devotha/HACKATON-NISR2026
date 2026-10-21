@@ -1,1 +1,5 @@
-{ "outputDirectory": "app" }
+{
+  "framework": null,
+  "buildCommand": "",
+  "outputDirectory": "app"
+}

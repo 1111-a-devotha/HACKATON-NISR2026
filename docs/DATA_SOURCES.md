@@ -12,6 +12,8 @@ NISR data and analysis are licensed under Creative Commons Attribution 4.0 Inter
 
 ## Verification checklist
 
+Not yet completed. The team must tick these before claiming the figures were checked; the EICV7 Annex B table could not be read automatically while preparing this version.
+
 - [ ] Poverty rates match EICV7 Annex B for all 30 districts
 - [ ] FinScope access strand values checked against the report figure (and microdata if access is granted)
 - [ ] Census populations sum to 13,246,394
