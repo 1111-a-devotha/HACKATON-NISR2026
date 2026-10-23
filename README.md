@@ -7,8 +7,41 @@
 NISR 2026 Big Data Hackathon, Track 2: Financial Inclusion and Poverty Reduction.
 
 - **Live app:** https://ntawusigara.vercel.app
-- **Source code:** [add the public GitHub link before submitting]
+- **Source code:** https://github.com/1111-a-devotha/HACKATON-NISR2026
+- **Demo video (1 min 44 s, screen recording):** [demo/demo.webm](demo/demo.webm)
+- **Login:** none needed. The app is public and opens straight away.
 - **Team:** TUYISINGIZE Devotha and SEBAGENI ISANGE Aimee Kevine
+
+## What data it uses, what it says, how to use it
+
+**Data (all NISR sources, plus district shapes).**
+EICV7 district poverty 2024 and 2017 (`data/raw/eicv7_district_poverty.csv`), FinScope 2024 district financial access (`data/raw/finscope2024_district_access.csv`), Census 2022 district populations (`data/raw/census2022_district_population.csv`) and district boundary shapes for the map (`data/raw/district_shapes_svg.json`). Cleaned and combined tables are in `data/processed/`. All files are small, so they are included here. Original publications and how each figure was taken are in [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md). Household microdata (EICV7) is requested from the NISR Microdata Portal (https://microdata.statistics.gov.rw/index.php/catalog) and is not stored in this repository.
+
+**What the tool communicates.**
+Where poverty and financial exclusion overlap across Rwanda's 30 districts, how sure we are about each district's rank, and which districts a programme should reach first.
+
+**How users interact.**
+1. Look at the map and ranking. Click any district for its profile and "Why this score?".
+2. Change the weights, or press a lens (social protection, financial inclusion, stalled progress, reach).
+3. Open the evidence charts, plan coverage for a number of people, ask a question in Kinyarwanda, English or French, and download CSV, PNG or an A4 report.
+
+## Demo video
+
+`demo/demo.webm` is a screen recording of the app (1 min 44 s, recorded on a computer with screen-recording software, under the 3-minute limit).
+
+## Run it on any machine
+
+The app has no build step and needs no server code. Any static server works:
+
+```bash
+python -m http.server -d app 8000   # then open http://localhost:8000
+```
+
+Or open `app/index.html` directly. Analysis scripts need Python 3.9+ and `pip install -r analysis/requirements.txt`.
+
+## Originality declaration, sources and rights
+
+We declare that this submission is our own work and that all sources of reference are acknowledged in full ([docs/DATA_SOURCES.md](docs/DATA_SOURCES.md)). An AI assistant (Claude) helped with code and writing; how, and what the team did itself, is stated in [docs/AI_DISCLOSURE.md](docs/AI_DISCLOSURE.md). By entering, we accept the competition rule that intellectual property rights in the submitted work transfer to the National Institute of Statistics of Rwanda (NISR).
 
 ## The problem
 
@@ -64,6 +97,7 @@ analysis/            build_index.py: cleaning, index, robustness, clustering
                      district_model_check.py: tests district-level prediction (negative result)
                      train_poverty_model.py: household model for EICV7 microdata (phase 2)
                      train_assistant.py: trains the on-device assistant, writes app/ai-model.js
+demo/                demo.webm: screen recording of the app (under 3 minutes)
 app/                 Static web app (index.html, data.js, ntw-tools.js, ntw-charts.js, ai-model.js, ai-local.js, sw.js, manifest.webmanifest), deployable as is
 docs/                Problem and solution guide, judging-criteria mapping, NST2 alignment, methodology,
                      data sources, AI disclosure, roadmap
