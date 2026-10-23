@@ -2,12 +2,12 @@
 
 **District targeting for poverty reduction and financial inclusion in Rwanda**
 
-*Ntawusigara* means "no one is left behind". The tool shows where poverty and financial exclusion overlap across Rwanda's 30 districts, so social protection and financial inclusion programmes can be aimed at the same places.
+_Ntawusigara_ means "no one is left behind". The tool shows where poverty and financial exclusion overlap across Rwanda's 30 districts, so social protection and financial inclusion programmes can be aimed at the same places.
 
 NISR 2026 Big Data Hackathon, Track 2: Financial Inclusion and Poverty Reduction.
 
 - **Live app:** https://ntawusigara.vercel.app
-<<<<<<< HEAD
+  <<<<<<< HEAD
 - **Source code:** https://github.com/1111-a-devotha/HACKATON-NISR2026
 - **Demo video (1 min 44 s, screen recording):** [demo/demo.webm](demo/demo.webm)
 - **Login:** none needed. The app is public and opens straight away.
@@ -22,6 +22,7 @@ EICV7 district poverty 2024 and 2017 (`data/raw/eicv7_district_poverty.csv`), Fi
 Where poverty and financial exclusion overlap across Rwanda's 30 districts, how sure we are about each district's rank, and which districts a programme should reach first.
 
 **How users interact.**
+
 1. Look at the map and ranking. Click any district for its profile and "Why this score?".
 2. Change the weights, or press a lens (social protection, financial inclusion, stalled progress, reach).
 3. Open the evidence charts, plan coverage for a number of people, ask a question in Kinyarwanda, English or French, and download CSV, PNG or an A4 report.
@@ -42,11 +43,11 @@ Or open `app/index.html` directly. Analysis scripts need Python 3.9+ and `pip in
 
 ## Originality declaration, sources and rights
 
-We declare that this submission is our own work and that all sources of reference are acknowledged in full ([docs/DATA_SOURCES.md](docs/DATA_SOURCES.md)). An AI assistant (Claude) helped with code and writing; how, and what the team did itself, is stated in [docs/AI_DISCLOSURE.md](docs/AI_DISCLOSURE.md). By entering, we accept the competition rule that intellectual property rights in the submitted work transfer to the National Institute of Statistics of Rwanda (NISR).
-=======
+# We declare that this submission is our own work and that all sources of reference are acknowledged in full ([docs/DATA_SOURCES.md](docs/DATA_SOURCES.md)). An AI assistant (Claude) helped with code debbugging; how, and what the team did itself, is stated in [docs/AI_DISCLOSURE.md](docs/AI_DISCLOSURE.md). By entering, we accept the competition rule that intellectual property rights in the submitted work transfer to the National Institute of Statistics of Rwanda (NISR).
+
 - **Source code:** [add the public GitHub link before submitting]
 - **Team:** TUYISINGIZE Devotha and SEBAGENI ISANGE Aimee Kevine
->>>>>>> cd6c77501325c5a143462888f697995d1624f099
+  > > > > > > > cd6c77501325c5a143462888f697995d1624f099
 
 ## The problem
 
@@ -74,7 +75,7 @@ Planners in MINECOFIN, MINALOC and LODA, the National Bank, SACCOs and NGOs need
 - **Three languages:** the whole interface switches between Kinyarwanda, English and French.
 - **On-device AI assistant ("Ask the data"):** ask questions in Kinyarwanda, English or French. A small model trained by the team runs in the browser: no API, no key, no server, and it works offline. Answers are computed from the tool's district table, so figures cannot be invented.
 - **Briefing notes:** one click writes a three-paragraph note on any district, in the page language, for district officials and SACCO managers. Generated on the device from the same table.
-- **Rank uncertainty:** every rank comes with a likely range. The tool re-draws each district's survey estimates 1,000 times within their sampling error and re-ranks them with the user's weights. Gisagara is first, but its likely rank is 1 to 9; the top six all span roughly 1 to 12. The honest message for planners: the leading districts are a priority *group*, not a strict order.
+- **Rank uncertainty:** every rank comes with a likely range. The tool re-draws each district's survey estimates 1,000 times within their sampling error and re-ranks them with the user's weights. Gisagara is first, but its likely rank is 1 to 9; the top six all span roughly 1 to 12. The honest message for planners: the leading districts are a priority _group_, not a strict order.
 - **Plan coverage:** enter how many people a programme can reach (and optionally the cost per person). The tool shares them across the top priority districts, or all 30, in proportion to their poor people, capped at each district's poor population, with a CSV download.
 - **One-page district report:** prints an A4 brief for any district, in the page language, for district planning meetings.
 - **What changed:** ready for EICV8 or the next FinScope. Load the new district figures as a CSV (a template is provided); the tool flags which changes are larger than sampling error and shows how the ranking moves. A clearly labelled simulated demo shows why this matters: sampling noise alone can reshuffle the top 5 while no real change is flagged.
