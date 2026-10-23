@@ -7,6 +7,7 @@
 NISR 2026 Big Data Hackathon, Track 2: Financial Inclusion and Poverty Reduction.
 
 - **Live app:** https://ntawusigara.vercel.app
+<<<<<<< HEAD
 - **Source code:** https://github.com/1111-a-devotha/HACKATON-NISR2026
 - **Demo video (1 min 44 s, screen recording):** [demo/demo.webm](demo/demo.webm)
 - **Login:** none needed. The app is public and opens straight away.
@@ -42,6 +43,10 @@ Or open `app/index.html` directly. Analysis scripts need Python 3.9+ and `pip in
 ## Originality declaration, sources and rights
 
 We declare that this submission is our own work and that all sources of reference are acknowledged in full ([docs/DATA_SOURCES.md](docs/DATA_SOURCES.md)). An AI assistant (Claude) helped with code and writing; how, and what the team did itself, is stated in [docs/AI_DISCLOSURE.md](docs/AI_DISCLOSURE.md). By entering, we accept the competition rule that intellectual property rights in the submitted work transfer to the National Institute of Statistics of Rwanda (NISR).
+=======
+- **Source code:** [add the public GitHub link before submitting]
+- **Team:** TUYISINGIZE Devotha and SEBAGENI ISANGE Aimee Kevine
+>>>>>>> cd6c77501325c5a143462888f697995d1624f099
 
 ## The problem
 
@@ -97,7 +102,10 @@ analysis/            build_index.py: cleaning, index, robustness, clustering
                      district_model_check.py: tests district-level prediction (negative result)
                      train_poverty_model.py: household model for EICV7 microdata (phase 2)
                      train_assistant.py: trains the on-device assistant, writes app/ai-model.js
+<<<<<<< HEAD
 demo/                demo.webm: screen recording of the app (under 3 minutes)
+=======
+>>>>>>> cd6c77501325c5a143462888f697995d1624f099
 app/                 Static web app (index.html, data.js, ntw-tools.js, ntw-charts.js, ai-model.js, ai-local.js, sw.js, manifest.webmanifest), deployable as is
 docs/                Problem and solution guide, judging-criteria mapping, NST2 alignment, methodology,
                      data sources, AI disclosure, roadmap
