@@ -1,0 +1,11 @@
+{
+  "name": "Ntawusigara: no one left behind",
+  "short_name": "Ntawusigara",
+  "description": "Where poverty and financial exclusion overlap across Rwanda's 30 districts.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#62192E",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
